@@ -22,38 +22,8 @@ jobs:
         run: |
           pyinstaller --onefile --noconsole --name MyApp main.py
 
-      - name: Create release
-        uses: actions/github-script@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          script: |
-            const { Octokit } = require('@octokit/rest');
-            const { createRelease } = require('@actions/github');
-            const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-            const { owner, repo } = context.repo;
-            const tag_name = 'v1.0.0';
-            const release_name = 'MyApp v1.0.0';
-            const response = await octokit.repos.createRelease({
-              owner,
-              repo,
-              tag_name,
-              name: release_name,
-              body: 'Release notes',
-              draft: false,
-              prerelease: false,
-            });
-            const release_id = response.data.id;
-            const artifact_name = 'MyApp.exe';
-            const artifact_path = './dist/MyApp.exe';
-            const upload_url = response.data.upload_url;
-            const upload_response = await octokit.repos.uploadReleaseAsset({
-              url: upload_url,
-              headers: {
-                'content-type': 'application/octet-stream',
-                'content-length': require('fs').statSync(artifact_path).size
-              },
-              name: artifact_name,
-              data: require('fs').readFileSync(artifact_path)
-            });
-            console.log(`Artifact uploaded: ${upload_response.data.browser_download_url}`);
+          name: assets-for-download
+          path: .

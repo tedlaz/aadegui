@@ -40,14 +40,14 @@ jobs:
 
       - name: make SHA2-SUMS files
         run: |
-          sha256sum artifact/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-256SUMS
-          sha512sum artifact/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-512SUMS
+          pwd
+          sha256sum aadegui/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-256SUMS
+          sha512sum aadegui/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-512SUMS
       - name: Publish Release
         uses: actions/create-release@v1
         with:
           tag_name: v0.0.2
-          release_name: Release v0.0.2
-          name: aadegui v0.0.2
+          release_name: aadegui v0.0.2
           body: |
             This is a pre-release of aadegui.
             It includes the following features:

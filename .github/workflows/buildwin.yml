@@ -27,7 +27,8 @@ jobs:
         with:
           name: aadegui
           path: dist/aadegui.exe
-  publish_release
+
+  publish_release:
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -52,8 +53,7 @@ jobs:
             It includes the following features:
             - Connects to AADE
             - Creates invoices
-          files:
-            SHA2-256SUMS
+          files: SHA2-256SUMS
             SHA2-512SUMS
             artifact/aadegui.exe
           draft: false

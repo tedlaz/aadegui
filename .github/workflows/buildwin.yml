@@ -22,16 +22,6 @@ jobs:
         run: |
           pyinstaller --onefile --noconsole --name MyApp main.py
 
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v1.0.0
-          release_name: MyApp v1.0.0
-          body: 'Release notes'
-
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:

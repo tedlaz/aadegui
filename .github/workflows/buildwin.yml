@@ -1,6 +1,9 @@
 name: Build pyside6 application for Windows
 
-on: [push]
+on:
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -36,8 +39,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.0.6
-          release_name: aadegui v0.0.6
+          tag_name: v0.0.7
+          release_name: aadegui v0.0.7
           draft: false
           prerelease: true
           body: |

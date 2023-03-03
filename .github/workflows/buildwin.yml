@@ -14,16 +14,31 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
+      - name: Install requirements
         run: |
           pip install pyside6 pyinstaller
 
       - name: Build application
         run: |
-          pyinstaller --onefile --noconsole --name MyApp main.py
+          pyinstaller --onefile --noconsole --name aadegui main.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: MyApp
-          path: dist/MyApp.exe
+          name: aadegui
+          path: dist/aadegui.exe
+
+      - name: Publish Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v0.0.2
+          release_name: Release v0.0.2
+          body: |
+            This is a pre-release of aadegui.
+            It includes the following features:
+            - Connects to AADE
+            - Creates invoices
+          draft: false
+          prerelease: true

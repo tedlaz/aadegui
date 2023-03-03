@@ -38,25 +38,17 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
 
-      - name: make SHA2-SUMS files
-        run: |
-          sha256sum aadegui/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-256SUMS
-          sha512sum aadegui/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-512SUMS
       - name: Publish Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.0.3
-          release_name: aadegui v0.0.3
+          tag_name: v0.0.4
+          release_name: aadegui v0.0.4
           body: |
             This is a pre-release of aadegui.
             It includes the following features:
             - Connects to AADE
             - Creates invoices
-          files: |
-            SHA2-256SUMS
-            SHA2-512SUMS
-            aadegui/aadegui.exe
           draft: false
           prerelease: true

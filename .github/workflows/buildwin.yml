@@ -40,11 +40,12 @@ jobs:
 
       - name: make SHA2-SUMS files
         run: |
-          pwd
           sha256sum aadegui/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-256SUMS
           sha512sum aadegui/aadegui.exe | awk '{print $1 "  aadegui.exe"}' >> SHA2-512SUMS
       - name: Publish Release
         uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v0.0.2
           release_name: aadegui v0.0.2
@@ -53,7 +54,8 @@ jobs:
             It includes the following features:
             - Connects to AADE
             - Creates invoices
-          files: SHA2-256SUMS
+          files: |
+            SHA2-256SUMS
             SHA2-512SUMS
             artifact/aadegui.exe
           draft: false

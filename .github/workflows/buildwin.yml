@@ -39,10 +39,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.0.7
-          release_name: aadegui v0.0.7
+          tag_name: v0.0.8
+          release_name: aadegui v0.0.8
           draft: false
-          prerelease: true
+          prerelease: false
           body: |
             This is a pre-release of aadegui.
             It includes the following features:

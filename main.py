@@ -4,8 +4,8 @@ import sys
 from PySide6 import QtGui, QtWidgets
 
 import params as par
-from ui_aade_connect import Ui_Dialog
-from ui_main import Ui_MainWindow
+from ui.ui_aade_connect import Ui_Dialog
+from ui.ui_main import Ui_MainWindow
 from validate_data import validate
 
 
@@ -31,11 +31,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.make_connections()
 
-        self.table_details_new_line()
+        # self.table_details_new_line()
 
     def make_connections(self):
         self.bnew_line.clicked.connect(self.table_details_new_line)
         self.bpost.clicked.connect(self.post_data)
+        self.partype.currentIndexChanged.connect(self.update_l1)
+
+    def update_l1(self):
+        pass
 
     def fill_Combo(self, items, combobox):
         for item in items:

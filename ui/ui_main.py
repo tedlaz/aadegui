@@ -30,6 +30,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(790, 777)
         self.actionopen = QAction(MainWindow)
         self.actionopen.setObjectName(u"actionopen")
+        self.actionexit = QAction(MainWindow)
+        self.actionexit.setObjectName(u"actionexit")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -180,9 +182,9 @@ class Ui_MainWindow(object):
 
         self.menubar.addAction(self.menufile.menuAction())
         self.menufile.addAction(self.actionopen)
+        self.menufile.addAction(self.actionexit)
 
         self.retranslateUi(MainWindow)
-        self.actionopen.changed.connect(MainWindow.close)
 
         self.series.setCurrentIndex(-1)
 
@@ -193,6 +195,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.actionopen.setText(QCoreApplication.translate("MainWindow", u"open", None))
+        self.actionexit.setText(QCoreApplication.translate("MainWindow", u"exit", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0397\u03bc\u03b5\u03c1\u03bf\u03bc\u03b7\u03bd\u03af\u03b1", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Branch", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u03a4\u03cd\u03c0\u03bf\u03c2", None))

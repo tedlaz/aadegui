@@ -31,7 +31,21 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.make_connections()
 
+        self.create_actions()
+
         # self.table_details_new_line()
+    def create_actions(self):
+        self.actionopen.triggered.connect(self.openf)
+        self.actionexit.triggered.connect(self.close)
+
+    def openf(self):
+        dlg = EmployeeDlg(self)
+        dlg.ui.afm.setText('123456789')
+        dlg.exec()
+
+        print(dlg.ui.afm.text())
+        print(dlg.ui.user.text())
+        print(dlg.ui.key.text())
 
     def make_connections(self):
         self.bnew_line.clicked.connect(self.table_details_new_line)
@@ -54,13 +68,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.series_op = par.series
 
     def post_data(self):
-        dlg = EmployeeDlg(self)
-        dlg.ui.afm.setText('123456789')
-        dlg.exec()
-
-        print(dlg.ui.afm.text())
-        print(dlg.ui.user.text())
-        print(dlg.ui.key.text())
 
         data = self.collect_data()
         val, errors = validate(data)

@@ -13,6 +13,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+          architecture: 'x64'
 
       - name: Install requirements
         run: |
@@ -28,27 +29,33 @@ jobs:
           name: aadegui
           path: dist/aadegui.exe
 
-  publish_release:
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-
-      - name: Publish Release
+      - name: Create Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.0.4
-          release_name: aadegui v0.0.4
+          tag_name: v0.0.5
+          release_name: aadegui v0.0.5
+          draft: false
+          prerelease: true
           body: |
             This is a pre-release of aadegui.
             It includes the following features:
             - Connects to AADE
             - Creates invoices
-          draft: false
-          prerelease: true
+
+      - name: Publish Binary Release
+        id: upload-release-binary
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.build_windows_exe.outputs.upload_url }}
+          asset_path: ./dist/aadegui.exe
+          asset_name: aadegui.exe
+          asset_content_type: application/octet-stream
+
+      - name: Get SHA2-256SUMS for aadegui.exe
+        id: sha2_file
+        run: echo "sha2_windows=$((Get-FileHash dist\aadegui.exe -Algorithm SHA256).Hash.ToLower())" >> $GITHUB_OUTPUT

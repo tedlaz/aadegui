@@ -47,8 +47,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.0.2
-          release_name: aadegui v0.0.2
+          tag_name: v0.0.3
+          release_name: aadegui v0.0.3
           body: |
             This is a pre-release of aadegui.
             It includes the following features:
@@ -57,6 +57,6 @@ jobs:
           files: |
             SHA2-256SUMS
             SHA2-512SUMS
-            artifact/aadegui.exe
+            aadegui/aadegui.exe
           draft: false
           prerelease: true

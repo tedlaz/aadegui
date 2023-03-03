@@ -36,8 +36,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.0.5
-          release_name: aadegui v0.0.5
+          tag_name: v0.0.6
+          release_name: aadegui v0.0.6
           draft: false
           prerelease: true
           body: |
@@ -52,7 +52,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.build_windows_exe.outputs.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./dist/aadegui.exe
           asset_name: aadegui.exe
           asset_content_type: application/octet-stream

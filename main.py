@@ -32,8 +32,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.make_connections()
 
         self.create_actions()
-
         # self.table_details_new_line()
+
     def create_actions(self):
         self.actionopen.triggered.connect(self.openf)
         self.actionexit.triggered.connect(self.close)

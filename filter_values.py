@@ -21,8 +21,3 @@ def filter_e3(inv: str, cat: str):
     assert cat in [i[0] for i in fcat]
     e3li = par.bounds[inv][cat]
     return [(key, die3[key]) for key in e3li]
-
-
-print(die3)
-print(filter_cat('1.1'))
-print(filter_e3('1.1', 'category1_1'))

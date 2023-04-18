@@ -26,6 +26,12 @@
       </item>
       <item row="0" column="1" colspan="2">
        <widget class="QDateEdit" name="date">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="calendarPopup">
          <bool>true</bool>
         </property>
@@ -50,7 +56,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="branch"/>
+         <widget class="QComboBox" name="branch">
+          <property name="maximumSize">
+           <size>
+            <width>300</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -73,6 +86,12 @@
       </item>
       <item row="2" column="1">
        <widget class="QComboBox" name="series">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="currentIndex">
          <number>-1</number>
         </property>
@@ -87,6 +106,12 @@
       </item>
       <item row="2" column="3">
        <widget class="QLineEdit" name="aa">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
         </property>
@@ -100,7 +125,14 @@
        </widget>
       </item>
       <item row="2" column="5">
-       <widget class="QLineEdit" name="cafm"/>
+       <widget class="QLineEdit" name="cafm">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -178,7 +210,7 @@
       <item>
        <widget class="QPushButton" name="bpost">
         <property name="text">
-         <string>Post</string>
+         <string>Έκδοση</string>
         </property>
        </widget>
       </item>
@@ -195,7 +227,7 @@
      <x>0</x>
      <y>0</y>
      <width>790</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menufile">
